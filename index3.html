@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICT Career Pathways</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; color: #333; }
+.cute-back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+
+        padding: 12px 24px;
+        background: #ff72b1;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 0, 140, 0.3);
+        transition: 0.2s ease;
+    }
+
+    .cute-back:hover {
+        transform: scale(1.05);
+        background: #ff4fa2;
+    }
+
+header { background-color: #0057b7; color: white; text-align: center; padding: 20px; font-size: 28px; font-weight: bold; }
+.container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+.search-bar { text-align: center; margin-bottom: 20px; }
+.search-bar input { width: 80%; max-width: 400px; padding: 10px 15px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.card { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 20px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.card h3 { color: #0057b7; margin-top: 0; }
+.modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+.modal-content { background-color: #fff; margin: 50px auto; padding: 20px; border-radius: 12px; width: 90%; max-width: 800px; position: relative; max-height: 90vh; overflow-y: auto; }
+.close { color: #333; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close:hover { color: #0057b7; }
+.job-card { background: #f0f4f8; padding: 15px; border-radius: 10px; margin: 10px 0; }
+.job-card h4 { margin: 0 0 5px 0; color: #0057b7; }
+</style>
+</head>
+<body>
+
+<button onclick="history.back()" class="cute-back">
+    ⬅ Go Back
+</button>
+
+<header>ICT Career Pathways</header>
+
+<div class="container">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search ICT pathways by keyword...">
+    </div>
+
+    <div class="cards">
+        <!-- Cards -->
+        <div class="card" data-modal="modal1"><h3>Software & App Development</h3><p>Develop software applications for various platforms.</p></div>
+        <div class="card" data-modal="modal2"><h3>Networking & System Administration</h3><p>Manage computer networks and systems.</p></div>
+        <div class="card" data-modal="modal3"><h3>Cybersecurity</h3><p>Protect systems from cyber threats.</p></div>
+        <div class="card" data-modal="modal4"><h3>Data Science & Analytics</h3><p>Analyze data to support business decisions.</p></div>
+        <div class="card" data-modal="modal5"><h3>Web Development & Design</h3><p>Build and design websites.</p></div>
+        <div class="card" data-modal="modal6"><h3>IT Support & Infrastructure</h3><p>Provide technical support and maintain systems.</p></div>
+        <div class="card" data-modal="modal7"><h3>Animation & Multimedia Arts</h3><p>Create animations and multimedia content.</p></div>
+        <div class="card" data-modal="modal8"><h3>Telecommunications</h3><p>Work with communication systems.</p></div>
+        <div class="card" data-modal="modal9"><h3>Cloud Computing & DevOps</h3><p>Manage cloud infrastructure and workflows.</p></div>
+        <div class="card" data-modal="modal10"><h3>AI & Machine Learning</h3><p>Build AI models and machine learning solutions.</p></div>
+        <div class="card" data-modal="modal11"><h3>Mobile Development</h3><p>Develop apps for iOS and Android.</p></div>
+        <div class="card" data-modal="modal12"><h3>Game Development</h3><p>Create video games for multiple platforms.</p></div>
+        <div class="card" data-modal="modal13"><h3>IT Project Management</h3><p>Plan and oversee IT projects.</p></div>
+        <div class="card" data-modal="modal14"><h3>Internet of Things (IoT)</h3><p>Connect and automate smart devices.</p></div>
+        <div class="card" data-modal="modal15"><h3>Blockchain & Cryptocurrency</h3><p>Develop blockchain applications and crypto systems.</p></div>
+        <div class="card" data-modal="modal16"><h3>Augmented & Virtual Reality (AR/VR)</h3><p>Create immersive AR/VR experiences.</p></div>
+        <div class="card" data-modal="modal17"><h3>Digital Marketing & SEO Tech</h3><p>Use technology to optimize marketing campaigns.</p></div>
+        <div class="card" data-modal="modal18"><h3>Database Administration</h3><p>Manage databases and ensure data security.</p></div>
+        <div class="card" data-modal="modal19"><h3>Robotics & Automation</h3><p>Develop automated and robotic systems.</p></div>
+        <div class="card" data-modal="modal20"><h3>IT Research & Innovation</h3><p>Explore emerging technologies and innovations.</p></div>
+        <div class="card" data-modal="modal21"><h3>E-Sports & Competitive Gaming Tech</h3><p>Manage esports platforms and gaming tech.</p></div>
+    </div>
+</div>
+
+<!-- ========================== MODALS ========================== -->
+
+<!-- Modal 1: Software & App Development -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Software & App Development</h2>
+    <p><strong>Overview:</strong> Design, code, test, and maintain software applications for web, desktop, and mobile platforms.</p>
+    <p><strong>Salary:</strong> PHP 25,000 – 70,000/month</p>
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+    <p><strong>Required Skills:</strong> Programming, debugging, teamwork</p>
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or STEM</p>
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Software Engineering, BS Mobile App Development</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>Web Developer</h4><p>Build websites using HTML, CSS, JS.</p><p>PHP 20,000 – 60,000</p></div>
+    <div class="job-card"><h4>Mobile App Developer</h4><p>Develop apps using Swift/Kotlin/React Native.</p><p>PHP 25,000 – 70,000</p></div>
+    <div class="job-card"><h4>Software Engineer</h4><p>Design, develop, test software systems.</p><p>PHP 30,000 – 80,000</p></div>
+    <div class="job-card"><h4>SaaS Developer</h4><p>Develop cloud-based applications.</p><p>PHP 35,000 – 90,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 2: Networking & System Administration -->
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Networking & System Administration</h2>
+
+    <p><strong>Overview:</strong> Set up, manage, and maintain computer networks, servers, and IT systems to ensure smooth and secure operations.</p>
+
+    <p><strong>Salary:</strong> PHP 18,000 – 90,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+
+    <p><strong>Required Skills:</strong> Network configuration, troubleshooting, server management, IP addressing, hardware setup, cybersecurity basics</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS)</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BSCpE, BS Network Administration, BSIS</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Network Administrator</h4>
+      <p>Manages routers, switches, servers, and ensures stable company network connectivity.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>System Administrator</h4>
+      <p>Handles servers, backups, system performance, and security configurations.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Network Technician</h4>
+      <p>Installs and repairs network devices, cables, and equipment.</p>
+      <p>PHP 15,000 – 35,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>IT Infrastructure Specialist</h4>
+      <p>Maintains enterprise-level networks, cloud systems, servers, and data centers.</p>
+      <p>PHP 40,000 – 90,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 3: Cybersecurity -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Cybersecurity</h2>
+
+    <p><strong>Overview:</strong> Protects computer systems, networks, and data from hacking, malware, and cyberattacks through monitoring, threat analysis, and security implementation.</p>
+
+    <p><strong>Salary:</strong> PHP 30,000 – 120,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> Network security, ethical hacking, risk analysis, problem-solving, encryption, vulnerability scanning</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS)</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Cybersecurity, BS Computer Engineering</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Cybersecurity Analyst</h4>
+      <p>Monitors networks, detects threats, and responds to cyber incidents.</p>
+      <p>PHP 30,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Penetration Tester (Ethical Hacker)</h4>
+      <p>Tests systems for vulnerabilities by simulating cyberattacks.</p>
+      <p>PHP 40,000 – 120,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Security Operations Center (SOC) Specialist</h4>
+      <p>Analyzes security alerts and protects company systems in real-time.</p>
+      <p>PHP 35,000 – 90,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Information Security Officer</h4>
+      <p>Implements company-wide security policies and ensures data protection compliance.</p>
+      <p>PHP 50,000 – 110,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 4: Data Science & Analytics -->
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Data Science & Analytics</h2>
+
+    <p><strong>Overview:</strong> Collects, analyzes, and interprets data to help organizations make informed decisions using statistics, programming, and data visualization.</p>
+
+    <p><strong>Salary:</strong> PHP 35,000 – 150,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> Data analysis, statistics, Python/R programming, critical thinking, machine learning basics, visualization tools</p>
+
+    <p><strong>Recommended SHS Strand:</strong> STEM or ICT Strand</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Data Science, BSIT, BSCS, BS Statistics, BS Computer Engineering</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Data Analyst</h4>
+      <p>Analyzes datasets, creates reports, and provides insights for business decisions.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Data Scientist</h4>
+      <p>Builds predictive models, machine learning systems, and statistical algorithms.</p>
+      <p>PHP 50,000 – 150,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Business Intelligence (BI) Specialist</h4>
+      <p>Uses tools like Power BI/Tableau to visualize company data.</p>
+      <p>PHP 30,000 – 80,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Machine Learning Engineer</h4>
+      <p>Develops AI models that learn from data and improve over time.</p>
+      <p>PHP 60,000 – 140,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 5: Web Development & Design -->
+<div id="modal5" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Web Development & Design</h2>
+
+    <p><strong>Overview:</strong> Creates and maintains websites through coding, layout design, user interface creation, and web performance optimization.</p>
+
+    <p><strong>Salary:</strong> PHP 20,000 – 80,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate</p>
+
+    <p><strong>Required Skills:</strong> HTML, CSS, JavaScript, UI/UX design, responsive design, problem-solving, creativity</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or CSS</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Multimedia Arts, BS Web Development, BSIS</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Front-End Developer</h4>
+      <p>Builds the visual parts of websites using HTML, CSS, and JavaScript.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Back-End Developer</h4>
+      <p>Develops server-side logic, databases, and APIs.</p>
+      <p>PHP 30,000 – 80,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Full-Stack Developer</h4>
+      <p>Works on both front-end and back-end web development.</p>
+      <p>PHP 35,000 – 100,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>UI/UX Designer</h4>
+      <p>Designs user-friendly interfaces and improves user experience.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 6: IT Support & Infrastructure -->
+<div id="modal6" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>IT Support & Infrastructure</h2>
+
+    <p><strong>Overview:</strong> Provides technical support to users, maintains IT systems, and ensures that hardware, software, and networks run smoothly in an organization.</p>
+
+    <p><strong>Salary:</strong> PHP 15,000 – 50,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate</p>
+
+    <p><strong>Required Skills:</strong> Troubleshooting, hardware/software installation, network support, customer service, problem-solving, system maintenance</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS) or STEM</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Information Systems, BS Computer Engineering</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>IT Support Specialist</h4>
+      <p>Provides technical assistance to users and solves computer-related problems.</p>
+      <p>PHP 15,000 – 35,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Helpdesk Technician</h4>
+      <p>Monitors and resolves user issues, provides guidance, and maintains ticketing systems.</p>
+      <p>PHP 15,000 – 30,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Systems Support Technician</h4>
+      <p>Maintains servers, ensures backups, and monitors IT infrastructure performance.</p>
+      <p>PHP 20,000 – 45,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>IT Infrastructure Specialist</h4>
+      <p>Manages enterprise-level networks, servers, and hardware systems.</p>
+      <p>PHP 35,000 – 50,000</p>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Modal 7: Animation & Multimedia Arts -->
+<div id="modal7" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Animation & Multimedia Arts</h2>
+
+    <p><strong>Overview:</strong> Creates digital art, animations, graphics, videos, and visual content for entertainment, advertising, games, and media production.</p>
+
+    <p><strong>Salary:</strong> PHP 18,000 – 90,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+
+    <p><strong>Required Skills:</strong> Drawing, digital illustration, 2D/3D animation, video editing, creativity, storytelling, Adobe/Blender skills</p>
+
+    <p><strong>Recommended SHS Strand:</strong> Arts & Design Track or ICT (Animation Focus if available)</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Multimedia Arts, Bachelor of Fine Arts (Animation), BS Entertainment & Multimedia Computing</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>2D Animator</h4>
+      <p>Creates hand-drawn or digital 2D animations for shows, ads, and games.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>3D Animator</h4>
+      <p>Builds 3D characters and animations using software like Blender or Maya.</p>
+      <p>PHP 25,000 – 80,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Graphic Designer</h4>
+      <p>Designs logos, posters, social media graphics, and brand visuals.</p>
+      <p>PHP 18,000 – 50,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Video Editor</h4>
+      <p>Edits videos for marketing, content creation, film, or social media.</p>
+      <p>PHP 20,000 – 70,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 8: Telecommunications -->
+<div id="modal8" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Telecommunications</h2>
+
+    <p><strong>Overview:</strong> Focuses on building, maintaining, and securing communication systems such as mobile networks, internet infrastructure, satellite systems, and broadcast technologies.</p>
+
+    <p><strong>Salary:</strong> PHP 18,000 – 100,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+
+    <p><strong>Required Skills:</strong> Network setup, cabling, signal analysis, electronics, troubleshooting, equipment configuration</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS) or STEM</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Electronics Engineering, BS Computer Engineering, BSIT, BS Telecommunications Engineering</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Telecom Technician</h4>
+      <p>Installs and repairs telecom lines, fiber optics, and network equipment.</p>
+      <p>PHP 18,000 – 35,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Network Engineer (Telecom)</h4>
+      <p>Designs and manages communication systems, routers, switches, and data centers.</p>
+      <p>PHP 30,000 – 80,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Fiber Optic Specialist</h4>
+      <p>Installs and maintains fiber optic cables used for high-speed internet.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Broadcast Engineer</h4>
+      <p>Maintains radio, TV, and satellite broadcast equipment.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 9: Cloud Computing & DevOps -->
+<div id="modal9" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Cloud Computing & DevOps</h2>
+
+    <p><strong>Overview:</strong> Manages cloud infrastructure, automates deployment processes, and ensures smooth operation of applications and services in cloud environments.</p>
+
+    <p><strong>Salary:</strong> PHP 35,000 – 120,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> AWS/Azure/Google Cloud, scripting (Python/Bash), CI/CD, containerization (Docker/Kubernetes), infrastructure as code, problem-solving</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS) or STEM</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Computer Engineering, BS Network Administration</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Cloud Engineer</h4>
+      <p>Manages cloud resources, deployment, and monitoring of cloud applications.</p>
+      <p>PHP 40,000 – 100,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>DevOps Engineer</h4>
+      <p>Automates software deployment, manages CI/CD pipelines, and ensures reliability of production systems.</p>
+      <p>PHP 35,000 – 90,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Cloud Support Specialist</h4>
+      <p>Provides technical support for cloud platforms and resolves cloud service issues.</p>
+      <p>PHP 25,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Infrastructure Engineer</h4>
+      <p>Designs, implements, and maintains IT infrastructure in cloud and on-premises environments.</p>
+      <p>PHP 50,000 – 120,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 10: Artificial Intelligence & Machine Learning -->
+<div id="modal10" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Artificial Intelligence & Machine Learning</h2>
+
+    <p><strong>Overview:</strong> Develops intelligent systems and algorithms that allow computers to learn, predict, and automate tasks using data and models.</p>
+
+    <p><strong>Salary:</strong> PHP 40,000 – 180,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Very High</p>
+
+    <p><strong>Required Skills:</strong> Python/R programming, machine learning algorithms, deep learning, data modeling, statistics, problem-solving, critical thinking</p>
+
+    <p><strong>Recommended SHS Strand:</strong> STEM or ICT Strand</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Data Science, BSIT, BSCS, BS Computer Engineering, BS AI</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Machine Learning Engineer</h4>
+      <p>Builds predictive models and optimizes machine learning algorithms.</p>
+      <p>PHP 60,000 – 150,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>AI Developer</h4>
+      <p>Creates AI-based applications like chatbots, recognition systems, and automation tools.</p>
+      <p>PHP 50,000 – 140,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Deep Learning Specialist</h4>
+      <p>Designs neural networks for image, speech, and pattern recognition tasks.</p>
+      <p>PHP 70,000 – 180,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>AI Researcher</h4>
+      <p>Explores new AI algorithms and develops cutting-edge intelligent systems.</p>
+      <p>PHP 80,000 – 200,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 11: Mobile Development -->
+<div id="modal11" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Mobile Development</h2>
+
+    <p><strong>Overview:</strong> Designs, develops, and maintains applications for mobile platforms such as Android and iOS, ensuring functionality, performance, and user experience.</p>
+
+    <p><strong>Salary:</strong> PHP 25,000 – 90,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+
+    <p><strong>Required Skills:</strong> Java, Kotlin, Swift, React Native, Flutter, problem-solving, UI/UX design, testing and debugging mobile apps</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or CSS</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Software Engineering, BS Mobile App Development</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Android Developer</h4>
+      <p>Builds and maintains applications for Android devices using Java or Kotlin.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>iOS Developer</h4>
+      <p>Creates apps for iPhones and iPads using Swift or Objective-C.</p>
+      <p>PHP 30,000 – 80,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Cross-Platform Developer</h4>
+      <p>Develops apps that work across Android and iOS using frameworks like React Native or Flutter.</p>
+      <p>PHP 35,000 – 90,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Mobile App Tester</h4>
+      <p>Tests mobile apps for functionality, performance, and bugs.</p>
+      <p>PHP 20,000 – 50,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 12: Game Development -->
+<div id="modal12" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Game Development</h2>
+
+    <p><strong>Overview:</strong> Designs, develops, and maintains video games and interactive media for various platforms, combining programming, graphics, and gameplay design.</p>
+
+    <p><strong>Salary:</strong> PHP 20,000 – 90,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> C++, C#, Unity, Unreal Engine, 2D/3D graphics, storytelling, problem-solving, teamwork</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or Arts & Design Track</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Game Development, BS Multimedia Arts, BS Software Engineering, BS Computer Science</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>Game Programmer</h4>
+      <p>Writes code for game mechanics, physics, and user interactions.</p>
+      <p>PHP 25,000 – 70,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Game Designer</h4>
+      <p>Plans game rules, levels, storylines, and player experience.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>3D Artist</h4>
+      <p>Creates 3D models, textures, and visual effects for games.</p>
+      <p>PHP 20,000 – 60,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>QA Tester</h4>
+      <p>Tests games for bugs, performance, and usability issues.</p>
+      <p>PHP 15,000 – 40,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 13: IT Project Management -->
+<div id="modal13" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>IT Project Management</h2>
+
+    <p><strong>Overview:</strong> Plans, coordinates, and oversees IT projects, ensuring timely delivery, proper resource allocation, and alignment with organizational goals.</p>
+
+    <p><strong>Salary:</strong> PHP 35,000 – 120,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> Project planning, risk management, leadership, communication, Agile/Scrum knowledge, budgeting, problem-solving</p>
+
+    <p><strong>Recommended SHS Strand:</strong> STEM or ICT Strand</p>
+
+    <p><strong>Recommended College Courses:</strong> BS Information Technology, BS Computer Science, BS Information Systems, BS Project Management</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>IT Project Manager</h4>
+      <p>Leads IT projects, coordinates teams, manages timelines and deliverables.</p>
+      <p>PHP 50,000 – 120,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Scrum Master</h4>
+      <p>Facilitates Agile/Scrum processes and ensures project team collaboration.</p>
+      <p>PHP 40,000 – 100,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>IT Coordinator</h4>
+      <p>Assists project managers and monitors project progress and resources.</p>
+      <p>PHP 35,000 – 80,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 14: Internet of Things (IoT) -->
+<div id="modal14" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h2>Internet of Things (IoT)</h2>
+
+    <p><strong>Overview:</strong> Connects everyday devices to the internet, enabling communication, automation, and data collection to improve efficiency and user experience.</p>
+
+    <p><strong>Salary:</strong> PHP 25,000 – 120,000/month</p>
+
+    <p><strong>Difficulty Level:</strong> High</p>
+
+    <p><strong>Required Skills:</strong> Embedded systems, networking, sensors, programming (Python, C/C++), IoT platforms, data analytics, problem-solving</p>
+
+    <p><strong>Recommended SHS Strand:</strong> ICT – Computer Systems Servicing (CSS) or STEM</p>
+
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Computer Engineering, BS Electronics Engineering, BS IoT</p>
+
+    <h3>Sample Jobs</h3>
+
+    <div class="job-card">
+      <h4>IoT Developer</h4>
+      <p>Builds IoT applications and programs that connect devices to networks and services.</p>
+      <p>PHP 30,000 – 90,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>IoT Systems Engineer</h4>
+      <p>Designs and integrates IoT systems, sensors, and communication protocols.</p>
+      <p>PHP 40,000 – 100,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>IoT Security Specialist</h4>
+      <p>Ensures IoT devices and networks are secure from cyber threats and vulnerabilities.</p>
+      <p>PHP 50,000 – 120,000</p>
+    </div>
+
+    <div class="job-card">
+      <h4>Embedded Systems Engineer</h4>
+      <p>Develops the firmware and hardware interfaces for IoT devices.</p>
+      <p>PHP 35,000 – 90,000</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal 15: Blockchain & Cryptocurrency -->
+<div id="modal15" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Blockchain & Cryptocurrency</h2>
+    <p><strong>Overview:</strong> Develop blockchain applications, smart contracts, and cryptocurrency systems.</p>
+    <p><strong>Salary:</strong> PHP 30,000 – 150,000/month</p>
+    <p><strong>Difficulty Level:</strong> High</p>
+    <p><strong>Required Skills:</strong> Blockchain protocols, Solidity, smart contracts, cryptography, decentralized apps</p>
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or STEM</p>
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Blockchain Development</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>Blockchain Developer</h4><p>Build decentralized applications and smart contracts.</p><p>PHP 40,000 – 120,000</p></div>
+    <div class="job-card"><h4>Cryptocurrency Analyst</h4><p>Analyze crypto markets and blockchain trends.</p><p>PHP 30,000 – 100,000</p></div>
+    <div class="job-card"><h4>Blockchain Engineer</h4><p>Develop blockchain infrastructure and protocols.</p><p>PHP 50,000 – 150,000</p></div>
+    <div class="job-card"><h4>Smart Contract Developer</h4><p>Program and deploy smart contracts on blockchain networks.</p><p>PHP 40,000 – 120,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 16: AR/VR -->
+<div id="modal16" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Augmented & Virtual Reality (AR/VR)</h2>
+    <p><strong>Overview:</strong> Design and develop immersive AR and VR experiences for games, simulations, and training.</p>
+    <p><strong>Salary:</strong> PHP 25,000 – 120,000/month</p>
+    <p><strong>Difficulty Level:</strong> High</p>
+    <p><strong>Required Skills:</strong> Unity/Unreal Engine, 3D modeling, C#/C++, UX design, storytelling, graphics programming</p>
+    <p><strong>Recommended SHS Strand:</strong> Arts & Design Track or ICT Strand</p>
+    <p><strong>Recommended College Courses:</strong> BS Game Development, BS Multimedia Arts, BS Software Engineering</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>VR Developer</h4><p>Creates virtual reality applications and simulations.</p><p>PHP 30,000 – 90,000</p></div>
+    <div class="job-card"><h4>AR Developer</h4><p>Develops augmented reality experiences for mobile and wearable devices.</p><p>PHP 25,000 – 80,000</p></div>
+    <div class="job-card"><h4>3D Environment Artist</h4><p>Designs 3D worlds and assets for immersive experiences.</p><p>PHP 20,000 – 70,000</p></div>
+    <div class="job-card"><h4>XR Interaction Designer</h4><p>Designs interactive user experiences in AR/VR applications.</p><p>PHP 25,000 – 90,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 17: Digital Marketing & SEO Tech -->
+<div id="modal17" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Digital Marketing & SEO Tech</h2>
+    <p><strong>Overview:</strong> Uses technology to optimize online marketing campaigns, SEO, social media, and marketing analytics.</p>
+    <p><strong>Salary:</strong> PHP 20,000 – 80,000/month</p>
+    <p><strong>Difficulty Level:</strong> Moderate</p>
+    <p><strong>Required Skills:</strong> SEO, SEM, marketing automation tools, analytics, content management, social media</p>
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or ABM Track</p>
+    <p><strong>Recommended College Courses:</strong> BS Digital Marketing, BS IT, BS Multimedia Arts</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>SEO Specialist</h4><p>Optimizes website content to rank higher in search engines.</p><p>PHP 20,000 – 50,000</p></div>
+    <div class="job-card"><h4>Digital Marketing Analyst</h4><p>Analyzes campaigns and marketing data to improve ROI.</p><p>PHP 25,000 – 60,000</p></div>
+    <div class="job-card"><h4>Content Strategist</h4><p>Plans and creates digital content for marketing purposes.</p><p>PHP 20,000 – 50,000</p></div>
+    <div class="job-card"><h4>Marketing Automation Specialist</h4><p>Manages email campaigns and marketing automation tools.</p><p>PHP 25,000 – 70,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 18: Database Administration -->
+<div id="modal18" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Database Administration</h2>
+    <p><strong>Overview:</strong> Maintains and secures databases, manages data storage, and ensures integrity and availability.</p>
+    <p><strong>Salary:</strong> PHP 25,000 – 100,000/month</p>
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+    <p><strong>Required Skills:</strong> SQL, NoSQL, Oracle, database backup, security, performance tuning</p>
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or STEM</p>
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Database Administration</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>Database Administrator (DBA)</h4><p>Manages database security, backup, and recovery.</p><p>PHP 25,000 – 80,000</p></div>
+    <div class="job-card"><h4>SQL Developer</h4><p>Writes queries and develops database applications.</p><p>PHP 25,000 – 70,000</p></div>
+    <div class="job-card"><h4>Data Engineer</h4><p>Builds data pipelines and manages large datasets.</p><p>PHP 30,000 – 90,000</p></div>
+    <div class="job-card"><h4>Database Security Specialist</h4><p>Ensures database systems are protected from unauthorized access.</p><p>PHP 35,000 – 100,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 19: Robotics & Automation -->
+<div id="modal19" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Robotics & Automation</h2>
+    <p><strong>Overview:</strong> Designs and programs industrial robots, automated systems, and AI-driven machines to perform tasks efficiently.</p>
+    <p><strong>Salary:</strong> PHP 30,000 – 150,000/month</p>
+    <p><strong>Difficulty Level:</strong> High</p>
+    <p><strong>Required Skills:</strong> Robotics programming, mechanical design, AI integration, sensors, PLCs, problem-solving</p>
+    <p><strong>Recommended SHS Strand:</strong> STEM or ICT</p>
+    <p><strong>Recommended College Courses:</strong> BS Robotics, BS Mechanical Engineering, BS Mechatronics, BS Computer Engineering</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>Robotics Engineer</h4><p>Designs and programs robots for industrial and commercial use.</p><p>PHP 40,000 – 120,000</p></div>
+    <div class="job-card"><h4>Automation Specialist</h4><p>Implements automated systems to improve production efficiency.</p><p>PHP 35,000 – 100,000</p></div>
+    <div class="job-card"><h4>AI Robotics Developer</h4><p>Integrates AI systems into robotic applications.</p><p>PHP 50,000 – 150,000</p></div>
+    <div class="job-card"><h4>Industrial Robot Technician</h4><p>Maintains and repairs industrial robots.</p><p>PHP 30,000 – 70,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 20: IT Research & Innovation -->
+<div id="modal20" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>IT Research & Innovation</h2>
+    <p><strong>Overview:</strong> Explores emerging technologies, experimental computing, and innovation to develop new IT solutions and patents.</p>
+    <p><strong>Salary:</strong> PHP 30,000 – 150,000/month</p>
+    <p><strong>Difficulty Level:</strong> Very High</p>
+    <p><strong>Required Skills:</strong> Research methodology, programming, prototyping, problem-solving, AI/ML basics, innovation management</p>
+    <p><strong>Recommended SHS Strand:</strong> STEM or ICT</p>
+    <p><strong>Recommended College Courses:</strong> BSIT, BSCS, BS Data Science, BS Innovation & Technology</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>IT Researcher</h4><p>Develops and tests new technologies and applications.</p><p>PHP 35,000 – 120,000</p></div>
+    <div class="job-card"><h4>Innovation Analyst</h4><p>Identifies technology trends and opportunities.</p><p>PHP 30,000 – 100,000</p></div>
+    <div class="job-card"><h4>Tech Consultant</h4><p>Advises companies on IT strategies and innovative solutions.</p><p>PHP 40,000 – 150,000</p></div>
+    <div class="job-card"><h4>Prototyping Engineer</h4><p>Builds experimental IT prototypes and solutions.</p><p>PHP 35,000 – 120,000</p></div>
+  </div>
+</div>
+
+<!-- Modal 21: E-Sports & Competitive Gaming Tech -->
+<div id="modal21" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>E-Sports & Competitive Gaming Tech</h2>
+    <p><strong>Overview:</strong> Manages esports platforms, develops competitive gaming software, streaming solutions, and analytics tools for gamers.</p>
+    <p><strong>Salary:</strong> PHP 20,000 – 100,000/month</p>
+    <p><strong>Difficulty Level:</strong> Moderate to High</p>
+    <p><strong>Required Skills:</strong> Game programming, live streaming platforms, gaming analytics, event management</p>
+    <p><strong>Recommended SHS Strand:</strong> ICT – Programming or STEM</p>
+    <p><strong>Recommended College Courses:</strong> BS Game Development, BS IT, BS Multimedia Arts</p>
+    <h3>Sample Jobs</h3>
+    <div class="job-card"><h4>Esports Manager</h4><p>Organizes esports events and manages teams.</p><p>PHP 25,000 – 80,000</p></div>
+    <div class="job-card"><h4>Game Analyst</h4><p>Provides game performance insights and analytics.</p><p>PHP 20,000 – 60,000</p></div>
+    <div class="job-card"><h4>Streaming Platform Developer</h4><p>Develops and maintains live streaming platforms.</p><p>PHP 30,000 – 90,000</p></div>
+    <div class="job-card"><h4>Gaming Software Engineer</h4><p>Develops competitive gaming software and tools.</p><p>PHP 25,000 – 100,000</p></div>
+  </div>
+</div>
+
+<script>
+// Modal functionality
+const cards = document.querySelectorAll('.card');
+const modals = document.querySelectorAll('.modal');
+const closes = document.querySelectorAll('.close');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    document.getElementById(card.dataset.modal).style.display = 'block';
+  });
+});
+
+closes.forEach(close => {
+  close.addEventListener('click', () => {
+    close.parentElement.parentElement.style.display = 'none';
+  });
+});
+
+window.addEventListener('click', e => {
+  modals.forEach(modal => {
+    if(e.target === modal) modal.style.display = 'none';
+  });
+});
+
+// Search functionality
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keyup', () => {
+  const filter = searchInput.value.toLowerCase();
+  cards.forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(filter) ? '' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>

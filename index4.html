@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICT Skills Assessment - Full 50 Questions with Progress</title>
+<style>
+body { margin:0; font-family: Arial, sans-serif; background:#f4f6f9; color:#333; }
+.cute-back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+
+        padding: 12px 24px;
+        background: #ff72b1;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 0, 140, 0.3);
+        transition: 0.2s ease;
+    }
+
+    .cute-back:hover {
+        transform: scale(1.05);
+        background: #ff4fa2;
+    }
+header { background:#0057b7; color:white; padding:20px; text-align:center; font-size:24px; font-weight:bold; }
+.container { max-width:800px; margin:30px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+h2 { color:#0057b7; border-left:5px solid #0057b7; padding-left:10px; }
+.question { margin-bottom:20px; }
+.question label { font-weight:bold; }
+select { padding:8px; width:100%; border-radius:5px; border:1px solid #ccc; }
+button { background:#0057b7; color:white; padding:12px 20px; border:none; border-radius:6px; cursor:pointer; font-size:16px; transition: background 0.3s ease, transform 0.2s ease; }
+button:hover { background:#003f82; transform: scale(1.05); }
+.results { margin-top:25px; padding:20px; background:#e8f0fe; border-radius:10px; display:none; opacity:0; transform:translateY(10px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.results.show { display:block; opacity:1; transform:translateY(0); }
+.progress-container { width: 100%; background: #ddd; border-radius: 10px; margin-bottom: 20px; }
+.progress-bar { height: 20px; width: 0%; background: #0057b7; border-radius: 10px; transition: width 0.4s ease; text-align:center; color:white; line-height:20px; }
+</style>
+</head>
+<body>
+ 
+<button onclick="history.back()" class="cute-back">
+    ⬅ Go Back
+</button>
+
+<header>ICT Skills Assessment</header>
+<div class="container">
+<div class="progress-container"><div class="progress-bar" id="progressBar">0%</div></div>
+
+<!-- Step 1: 20 Interest Questions -->
+<div class="step" id="step1">
+<h2>Interest Questions</h2>
+<script>
+const interestQuestions = [
+"Do you enjoy coding?","Are you interested in AI or machine learning?","Do you like solving puzzles or logic problems?",
+"Are you interested in web development?","Are you interested in cybersecurity?","Do you like working with databases?",
+"Do you enjoy learning new software tools?","Are you interested in mobile app development?","Do you enjoy problem-solving tasks?",
+"Are you interested in cloud computing?","Do you enjoy debugging code?","Are you interested in network security?",
+"Do you like analyzing data?","Are you interested in programming competitions?","Do you enjoy automating tasks?",
+"Do you like testing software?","Are you curious about computer hardware?","Do you enjoy creating websites?",
+"Are you interested in video game development?","Do you like experimenting with technology?"
+];
+for(let i=0;i<interestQuestions.length;i++){
+  document.write(`<div class='question'><label>${i+1}. ${interestQuestions[i]}</label><br><select id='q${i+1}'><option value='3'>Yes</option><option value='2'>Sometimes</option><option value='1'>No</option></select></div>`);
+}
+</script>
+<button onclick="nextStep()">Next</button>
+</div>
+
+<!-- Step 2: 20 Skills Questions -->
+<div class="step" id="step2" style="display:none;">
+<h2>Skills Questions</h2>
+<script>
+const skillsQuestions = [
+"Rate your logical reasoning skills.","Are you familiar with basic networking concepts?","Do you know how to write simple algorithms?",
+"Can you debug code effectively?","Do you have experience with databases?","Are you familiar with version control systems like Git?",
+"Can you design a simple website?","Do you know basic cybersecurity principles?","Can you write scripts for automation?",
+"Are you comfortable learning new programming languages?","Can you analyze datasets?","Do you understand computer hardware basics?",
+"Can you build a simple mobile app?","Are you familiar with cloud platforms like AWS or Azure?","Can you design user interfaces?",
+"Do you understand networking protocols?","Can you use command-line tools?","Do you know software testing methods?",
+"Can you troubleshoot system errors?","Are you familiar with AI/machine learning libraries?"
+];
+for(let i=0;i<skillsQuestions.length;i++){
+  const id = i+21;
+  document.write(`<div class='question'><label>${i+1}. ${skillsQuestions[i]}</label><br><select id='q${id}'><option value='3'>Yes/Strong</option><option value='2'>Somewhat/Average</option><option value='1'>No/Needs Improvement</option></select></div>`);
+}
+</script>
+<button onclick="prevStep()">Back</button>
+<button onclick="nextStep()">Next</button>
+</div>
+
+<!-- Step 3: 10 Personality Questions -->
+<div class="step" id="step3" style="display:none;">
+<h2>Personality Questions</h2>
+<script>
+const personalityQuestions=[
+"I prefer working in a team.","I am adaptable to learning new ICT tools.","I am detail-oriented.",
+"I like planning my work before starting.","I take initiative when needed.","I handle stress well in technical projects.",
+"I am open to constructive feedback.","I enjoy helping others with technology.","I am patient when solving complex problems.","I enjoy collaborative problem-solving."
+];
+for(let i=0;i<personalityQuestions.length;i++){
+  const id = i+41;
+  document.write(`<div class='question'><label>${i+1}. ${personalityQuestions[i]}</label><br><select id='q${id}'><option value='3'>Strongly Agree</option><option value='2'>Agree</option><option value='1'>Disagree</option></select></div>`);
+}
+</script>
+<button onclick="prevStep()">Back</button>
+<button onclick="calculateResults()">Finish</button>
+</div>
+
+<!-- Results -->
+<div class="results" id="resultsBox">
+<h2>Your ICT Matches:</h2>
+<p id="careerMatch"></p>
+<p id="skillScore"></p>
+<p id="suggestion"></p>
+</div>
+
+</div>
+<script>
+let currentStep=0;
+function showStep(step){
+  const steps=document.querySelectorAll('.step');
+  steps.forEach((s,i)=>s.style.display=i===step?'block':'none');
+  updateProgress();
+}
+function nextStep(){currentStep++;showStep(currentStep);}
+function prevStep(){currentStep--;showStep(currentStep);}
+function updateProgress(){
+  const progressBar=document.getElementById('progressBar');
+  const totalSteps=document.querySelectorAll('.step').length;
+  const percent=Math.round(((currentStep+1)/totalSteps)*100);
+  progressBar.style.width=percent+'%';
+  progressBar.innerText=percent+'%';
+}
+function calculateResults(){
+  let totalScore=0;
+  for(let i=1;i<=50;i++){const el=document.getElementById('q'+i); if(el) totalScore+=Number(el.value);}
+  let career='', suggestion='';
+  if(totalScore>=120){career='Software Developer, Data Analyst, AI Specialist'; suggestion='Focus on Python, web development, AI and data projects.';}
+  else if(totalScore>=80){career='Technical Support, Web Designer, Network Technician'; suggestion='Explore networking, UI design, and basic programming.';}
+  else{career='Digital Literacy Assistant or ICT Support'; suggestion='Build foundational ICT skills via tutorials and hands-on practice.';}
+  const resultsBox=document.getElementById('resultsBox');
+  document.getElementById('careerMatch').innerHTML=`<strong>Top Career Matches:</strong> ${career}`;
+  document.getElementById('skillScore').innerHTML=`<strong>Skill Score:</strong> ${totalScore}/150`;
+  document.getElementById('suggestion').innerHTML=`<strong>Suggested Learning Track:</strong> ${suggestion}`;
+  resultsBox.style.display='block';
+  setTimeout(()=>resultsBox.classList.add('show'),50);
+}
+window.onload=()=>showStep(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ICT Basic HTML Coding</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7ff;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .cute-back {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+
+        padding: 12px 24px;
+        background: #ff72b1;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(255, 0, 140, 0.3);
+        transition: 0.2s ease;
+    }
+
+    .cute-back:hover {
+        transform: scale(1.05);
+        background: #ff4fa2;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #4b6aff;
+        font-size: 30px;
+    }
+
+    h2 {
+        color: #333;
+        margin-top: 0;
+    }
+
+    .instruction-box, .code-box, .output-box {
+        background: #f0f3ff;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #dce3ff;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .code-input {
+        width: 100%;
+        height: 220px;
+        resize: none;
+        border-radius: 10px;
+        padding: 10px;
+        border: 2px solid #c5cdff;
+        font-family: monospace;
+        font-size: 15px;
+        background: #ffffff;
+    }
+
+    .output-display {
+        width: 100%;
+        height: 220px;
+        background: #ffffff;
+        border-radius: 10px;
+        border: 2px solid #c5cdff;
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        border: none;
+        background: #4b6aff;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        margin-right: 10px;
+    }
+
+    .btn:hover {
+        background: #3b56d3;
+    }
+
+    .nav-btns {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    .part {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+
+</style>
+</head>
+<body>
+
+<button onclick="history.back()" class="cute-back">
+    ⬅ Go Back
+</button>
+
+<div class="container">
+    <h1>Basic HTML Coding</h1>
+
+    <!-- PART 1 -->
+    <div class="part active" id="part1">
+        <h2>PART 1 – Creating a Heading</h2>
+
+        <div class="instruction-box">
+            <b>Instruction:</b><br>
+            Create a heading using the <code>&lt;h1&gt;</code> tag.<br><br>
+            <b>Example:</b><br>
+            <code>&lt;h1&gt;Hello ICT!&lt;/h1&gt;</code>
+        </div>
+
+        <textarea class="code-input" id="code1"></textarea>
+
+        <button class="btn" onclick="runCode(1)">Show Result</button>
+
+        <div class="output-box">
+            <iframe class="output-display" id="output1"></iframe>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn" onclick="nextPart(2)">Next →</button>
+        </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="part" id="part2">
+        <h2>PART 2 – Writing a Paragraph</h2>
+
+        <div class="instruction-box">
+            <b>Instruction:</b><br>
+            Create a paragraph using the <code>&lt;p&gt;</code> tag.<br><br>
+            <b>Example:</b><br>
+            <code>&lt;p&gt;ICT is fun and exciting!&lt;/p&gt;</code>
+        </div>
+
+        <textarea class="code-input" id="code2"></textarea>
+        <button class="btn" onclick="runCode(2)">Show Result</button>
+
+        <div class="output-box">
+            <iframe class="output-display" id="output2"></iframe>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn" onclick="prevPart(1)">← Back</button>
+            <button class="btn" onclick="nextPart(3)">Next →</button>
+        </div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="part" id="part3">
+        <h2>PART 3 – Adding an Image</h2>
+
+        <div class="instruction-box">
+            <b>Instruction:</b><br>
+            Add an image using <code>&lt;img&gt;</code> with a link.<br><br>
+            <b>Example:</b><br>
+            <code>&lt;img src="https://tse1.mm.bing.net/th/id/OIP.g8GvZl4kA1u3xtPUBvXGmAHaEK?pid=Api&P=0&h=220" width="200"&gt;</code>
+        </div>
+
+        <textarea class="code-input" id="code3"></textarea>
+        <button class="btn" onclick="runCode(3)">Show Result</button>
+
+        <div class="output-box">
+            <iframe class="output-display" id="output3"></iframe>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn" onclick="prevPart(2)">← Back</button>
+            <button class="btn" onclick="nextPart(4)">Next →</button>
+        </div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="part" id="part4">
+        <h2>PART 4 – Creating a List</h2>
+
+        <div class="instruction-box">
+            <b>Instruction:</b><br>
+            Create an unordered list using <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>.  
+            <br><br><b>Example:</b><br>
+            <code>
+                &lt;ul&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
+                &nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
+                &lt;/ul&gt;
+            </code>
+        </div>
+
+        <textarea class="code-input" id="code4"></textarea>
+        <button class="btn" onclick="runCode(4)">Show Result</button>
+
+        <div class="output-box">
+            <iframe class="output-display" id="output4"></iframe>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn" onclick="prevPart(3)">← Back</button>
+            <button class="btn" onclick="nextPart(5)">Next →</button>
+        </div>
+    </div>
+
+    <!-- PART 5 -->
+    <div class="part" id="part5">
+        <h2>PART 5 – Making a Hyperlink</h2>
+
+        <div class="instruction-box">
+            <b>Instruction:</b><br>
+            Create a link using <code>&lt;a&gt;</code>.<br><br>
+            <b>Example:</b><br>
+            <code>&lt;a href="https://www.youtube.com/watch?v=3sur4BmjQt8&list=RD3sur4BmjQt8&start_radio=1"&gt;Go to YouTube&lt;/a&gt;</code>
+        </div>
+
+        <textarea class="code-input" id="code5"></textarea>
+        <button class="btn" onclick="runCode(5)">Show Result</button>
+
+        <div class="output-box">
+            <iframe class="output-display" id="output5"></iframe>
+        </div>
+
+        <div class="nav-btns">
+            <button class="btn" onclick="prevPart(4)">← Back</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function runCode(part) {
+    const code = document.getElementById("code" + part).value;
+    const output = document.getElementById("output" + part);
+    output.srcdoc = code;
+}
+
+function nextPart(num) {
+    document.querySelector(".active").classList.remove("active");
+    document.getElementById("part" + num).classList.add("active");
+}
+
+function prevPart(num) {
+    document.querySelector(".active").classList.remove("active");
+    document.getElementById("part" + num).classList.add("active");
+}
+</script>
+
+</body>
+</html>
